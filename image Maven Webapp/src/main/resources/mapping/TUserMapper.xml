@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fan.image.dao.TUserMapper" >
+  <resultMap id="BaseResultMap" type="com.fan.image.bean.TUser" >
+    <result column="C_BH" property="cBh" jdbcType="CHAR" />
+    <result column="C_USERNAME" property="cUsername" jdbcType="VARCHAR" />
+    <result column="C_PASSWORD" property="cPassword" jdbcType="VARCHAR" />
+    <result column="N_AGE" property="nAge" jdbcType="INTEGER" />
+    <result column="C_SEX" property="cSex" jdbcType="VARCHAR" />
+    <result column="C_TEL" property="cTel" jdbcType="VARCHAR" />
+    <result column="C_ADRESS" property="cAdress" jdbcType="VARCHAR" />
+    <result column="C_EMAIL" property="cEmail" jdbcType="VARCHAR" />
+    <result column="C_ORDER" property="cOrder" jdbcType="CHAR" />
+    <result column="C_CAR" property="cCar" jdbcType="CHAR" />
+    <result column="C_COLLECTRION" property="cCollectrion" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    C_BH, C_USERNAME, C_PASSWORD, N_AGE, C_SEX, C_TEL, C_ADRESS, C_EMAIL, C_ORDER, C_CAR, 
+    C_COLLECTRION
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fan.image.bean.TUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.fan.image.bean.TUserExample" >
+    delete from t_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fan.image.bean.TUser" >
+    insert into t_user (C_BH, C_USERNAME, C_PASSWORD, 
+      N_AGE, C_SEX, C_TEL, C_ADRESS, 
+      C_EMAIL, C_ORDER, C_CAR, C_COLLECTRION
+      )
+    values (#{cBh,jdbcType=CHAR}, #{cUsername,jdbcType=VARCHAR}, #{cPassword,jdbcType=VARCHAR}, 
+      #{nAge,jdbcType=INTEGER}, #{cSex,jdbcType=VARCHAR}, #{cTel,jdbcType=VARCHAR}, #{cAdress,jdbcType=VARCHAR}, 
+      #{cEmail,jdbcType=VARCHAR}, #{cOrder,jdbcType=CHAR}, #{cCar,jdbcType=CHAR}, #{cCollectrion,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.fan.image.bean.TUser" >
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cBh != null" >
+        C_BH,
+      </if>
+      <if test="cUsername != null" >
+        C_USERNAME,
+      </if>
+      <if test="cPassword != null" >
+        C_PASSWORD,
+      </if>
+      <if test="nAge != null" >
+        N_AGE,
+      </if>
+      <if test="cSex != null" >
+        C_SEX,
+      </if>
+      <if test="cTel != null" >
+        C_TEL,
+      </if>
+      <if test="cAdress != null" >
+        C_ADRESS,
+      </if>
+      <if test="cEmail != null" >
+        C_EMAIL,
+      </if>
+      <if test="cOrder != null" >
+        C_ORDER,
+      </if>
+      <if test="cCar != null" >
+        C_CAR,
+      </if>
+      <if test="cCollectrion != null" >
+        C_COLLECTRION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cBh != null" >
+        #{cBh,jdbcType=CHAR},
+      </if>
+      <if test="cUsername != null" >
+        #{cUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="cPassword != null" >
+        #{cPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="nAge != null" >
+        #{nAge,jdbcType=INTEGER},
+      </if>
+      <if test="cSex != null" >
+        #{cSex,jdbcType=VARCHAR},
+      </if>
+      <if test="cTel != null" >
+        #{cTel,jdbcType=VARCHAR},
+      </if>
+      <if test="cAdress != null" >
+        #{cAdress,jdbcType=VARCHAR},
+      </if>
+      <if test="cEmail != null" >
+        #{cEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="cOrder != null" >
+        #{cOrder,jdbcType=CHAR},
+      </if>
+      <if test="cCar != null" >
+        #{cCar,jdbcType=CHAR},
+      </if>
+      <if test="cCollectrion != null" >
+        #{cCollectrion,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fan.image.bean.TUserExample" resultType="java.lang.Integer" >
+    select count(*) from t_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_user
+    <set >
+      <if test="record.cBh != null" >
+        C_BH = #{record.cBh,jdbcType=CHAR},
+      </if>
+      <if test="record.cUsername != null" >
+        C_USERNAME = #{record.cUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cPassword != null" >
+        C_PASSWORD = #{record.cPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nAge != null" >
+        N_AGE = #{record.nAge,jdbcType=INTEGER},
+      </if>
+      <if test="record.cSex != null" >
+        C_SEX = #{record.cSex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cTel != null" >
+        C_TEL = #{record.cTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cAdress != null" >
+        C_ADRESS = #{record.cAdress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cEmail != null" >
+        C_EMAIL = #{record.cEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cOrder != null" >
+        C_ORDER = #{record.cOrder,jdbcType=CHAR},
+      </if>
+      <if test="record.cCar != null" >
+        C_CAR = #{record.cCar,jdbcType=CHAR},
+      </if>
+      <if test="record.cCollectrion != null" >
+        C_COLLECTRION = #{record.cCollectrion,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_user
+    set C_BH = #{record.cBh,jdbcType=CHAR},
+      C_USERNAME = #{record.cUsername,jdbcType=VARCHAR},
+      C_PASSWORD = #{record.cPassword,jdbcType=VARCHAR},
+      N_AGE = #{record.nAge,jdbcType=INTEGER},
+      C_SEX = #{record.cSex,jdbcType=VARCHAR},
+      C_TEL = #{record.cTel,jdbcType=VARCHAR},
+      C_ADRESS = #{record.cAdress,jdbcType=VARCHAR},
+      C_EMAIL = #{record.cEmail,jdbcType=VARCHAR},
+      C_ORDER = #{record.cOrder,jdbcType=CHAR},
+      C_CAR = #{record.cCar,jdbcType=CHAR},
+      C_COLLECTRION = #{record.cCollectrion,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

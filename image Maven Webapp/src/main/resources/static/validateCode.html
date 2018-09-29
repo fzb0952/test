@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>validateCode.html</title>
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="js/bootstrap/bootstrap.min.css" />
+    <script type="text/javascript" src="js/jquery/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
+      <script type="text/javascript" src="js/validate/validate.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-xs-6 pull_left">
+        <div class="form-group">
+          <form id="validateform" action="/validate" method="post">
+            <input class="form-control" type="tel" id="verify_input" placeholder="请输入验证码" maxlength="4" name="validateCode">
+            <input  type="button" onclick="toValidate();" value="验证">
+          </form>
+        </div>
+      </div>
+      <div class="col-xs-6 pull_left">
+        <a href="javascript:void(0);" title="点击更换验证码">
+          <img id="imgVerify" src="" alt="更换验证码" height="36" width="90px" onclick="getVerify(this);">
+        </a>
+      </div>
+    </div>
+  </body>
+
+</html>

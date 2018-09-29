@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fan.image.dao.TRoleRightMapper" >
+  <resultMap id="BaseResultMap" type="com.fan.image.bean.TRoleRight" >
+    <result column="C_BH" property="cBh" jdbcType="CHAR" />
+    <result column="C_ROLE" property="cRole" jdbcType="CHAR" />
+    <result column="C_RIGHT" property="cRight" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    C_BH, C_ROLE, C_RIGHT
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.fan.image.bean.TRoleRightExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_role_right
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.fan.image.bean.TRoleRightExample" >
+    delete from t_role_right
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.fan.image.bean.TRoleRight" >
+    insert into t_role_right (C_BH, C_ROLE, C_RIGHT)
+    values (#{cBh,jdbcType=CHAR}, #{cRole,jdbcType=CHAR}, #{cRight,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fan.image.bean.TRoleRight" >
+    insert into t_role_right
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cBh != null" >
+        C_BH,
+      </if>
+      <if test="cRole != null" >
+        C_ROLE,
+      </if>
+      <if test="cRight != null" >
+        C_RIGHT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cBh != null" >
+        #{cBh,jdbcType=CHAR},
+      </if>
+      <if test="cRole != null" >
+        #{cRole,jdbcType=CHAR},
+      </if>
+      <if test="cRight != null" >
+        #{cRight,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.fan.image.bean.TRoleRightExample" resultType="java.lang.Integer" >
+    select count(*) from t_role_right
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update t_role_right
+    <set >
+      <if test="record.cBh != null" >
+        C_BH = #{record.cBh,jdbcType=CHAR},
+      </if>
+      <if test="record.cRole != null" >
+        C_ROLE = #{record.cRole,jdbcType=CHAR},
+      </if>
+      <if test="record.cRight != null" >
+        C_RIGHT = #{record.cRight,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update t_role_right
+    set C_BH = #{record.cBh,jdbcType=CHAR},
+      C_ROLE = #{record.cRole,jdbcType=CHAR},
+      C_RIGHT = #{record.cRight,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

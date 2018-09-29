@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>fileUpload.html</title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type"
+	content="multipart/form-data; charset=utf-8" />
+<script type="text/javascript" src = "js/vue/vue.js"></script>
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+</head>
+
+<body>
+    <div id = "app">
+        {{message}}
+    </div>
+	<form action='/test' method='post' enctype="multipart/form-data">
+		<p>
+			选择文件: <input type="file" name="test" />
+		</p>
+		<input type='submit' value="提交">
+	</form>
+</body>
+<script>
+    new Vue({
+    el:'#app',
+    data:{
+        message:'wecome to vue'
+    }
+    })
+</script>
+</html>
