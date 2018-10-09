@@ -1,3 +1,0 @@
-/** Toggle buttons
- * @mallendeo
- */

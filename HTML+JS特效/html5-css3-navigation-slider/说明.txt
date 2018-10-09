@@ -1,3 +1,0 @@
-2、HTML5结合jQuery实现图片滑块特效 绚丽jQuery焦点图
-
-对于jQuery，我们在html5tricks上分享的相对比较少，大家可以去jQuery插件栏目中查看自己需要的jQuery插件。今天我们要来分享一款很酷的jQuery焦点图插件，它带有一个导航菜单，它结合HTML5和CSS3技术，使这个焦点图特效显得更加绚丽。
